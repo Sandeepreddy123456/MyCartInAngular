@@ -1,0 +1,44 @@
+<div class="container">
+    <app-nav></app-nav>
+<!-- <button (click)="cart()">cart</button> -->
+   <h3>my cart</h3>
+   <div class="row">
+   <div class="col-sm-6"  *ngFor="let item of products;" >
+
+    <div class="card" style="width:400px">
+      <div class="row">
+        <div class="col-sm-6" >
+        <h4 >{{item.mcid}}</h4>
+        </div>
+        <img class="card-img-top" src={{item.src}} style="width:100%">
+        <img  class="card-img-top" [src]="'data:image/jpeg;base64,'+item.product.pic_byte" alt="Card image" style="width:100%">
+        <div class="card-body">
+
+          <div class="row">
+          <div class="col-sm-6" >
+          <h4 >{{item.product.pname}}</h4>
+          </div>
+        
+          <div class="col-sm-6" >
+          <h4 > {{item.product.price |currency: 'INR'}}</h4>
+          </div>
+          </div>
+          <p class="card-text">  {{item.product.desc}}</p>
+          <div class="row">
+            <div class="col-sm-6" >
+            <button class="btn btn-primary" (click)="removecart(item.id)" >Remove from CART</button>
+          
+          </div>
+            <div class="col-sm-6" >
+         <button  class="btn btn-warning" (click)="buy(item.mcid,item.product.pid)">Buy NOW</button>
+         <!-- <app-cart [items]="item.product.pid"></app-cart>  -->
+        </div>
+                  </div>
+        </div>
+      </div>
+      <br>
+
+</div>
+    </div>
+
+</div>

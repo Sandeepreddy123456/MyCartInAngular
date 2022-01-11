@@ -1,0 +1,33 @@
+<div class="container">
+    <app-nav></app-nav>
+   <h3>my orders</h3>
+   <div class="row">
+    <div class="col-sm-6"  *ngFor="let item of orderDetails3;" >
+ 
+     <div class="card" style="width:400px">
+       <div class="row">
+         <div class="col-sm-6" >
+         <h4 >{{item.oid}}</h4>
+         </div>
+         <!-- <img class="card-img-top" src={{item.src}} style="width:100%"> -->
+         <img  class="card-img-top" [src]="'data:image/jpeg;base64,'+item.product.pic_byte" alt="Card image" style="width:100%">
+         <div class="card-body">
+ 
+           <div class="row">
+           <div class="col-sm-6" >
+           <h4 >{{item.product.pname}}</h4>
+           </div>
+         
+           <div class="col-sm-6" >
+           <h4 > {{item.product.price |currency: 'INR'}}</h4>
+           </div>
+           </div>
+           <p class="card-text">  {{item.product.desc}}</p>
+         </div>
+       </div>
+       <br>
+ 
+ </div>
+     </div>
+  </div>
+<!-- </div> -->

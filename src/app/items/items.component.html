@@ -1,0 +1,150 @@
+          <div class="container">  
+           <app-nav></app-nav>
+          
+           <h3>products</h3>
+           <div class="container">
+
+<!-- ****************************************************************** -->
+
+            
+<div class="container row">
+  <div class="col-md-6">
+      <input type="file" (change)="onFileChanged($event)">
+
+  </div>
+  <div class="col-md-6">
+      <input type="button" (click)="onUpload()" value="upload">
+  </div>
+</div>
+<hr />
+<div class="container row">
+  <div class="col-md-12">
+      <div *ngIf=message>{{message}}</div>
+  </div>
+</div>
+
+<div class="container row">
+  <div class="col-md-6">
+      <input type="number" class="form-control" id="name" placeholder="image id" [(ngModel)]="imageName"
+          name="name" />
+  </div>
+  <div class="col-md-6">
+      <input type="button" (click)="getImage()" value="Get Image">
+
+  </div>
+</div>
+
+<div class="container row">
+  <div class="col-md-12">
+      <div *ngIf=retrievedImage>
+          <img [src]="retrievedImage">
+      </div>
+  </div>
+</div>
+<div class="row">
+<div class="col-sm-6"  *ngFor="let item of retrieveResonse1;" >
+  <div class="card" style="width:400px">
+      <img class="card-img-top" [src]="'data:image/jpeg;base64,'+item.pic_byte" alt="Card image" style="width:100%">
+      <div class="card-body">
+
+        <div class="row">
+        <div class="col-sm-6" >
+        <h4 >{{item.pname}}</h4>
+        </div>
+        <div class="col-sm-6" >
+        <h4 > {{item.price |currency: 'INR'}}</h4>
+        </div>
+        </div>
+        <p class="card-text">  {{item.desc}}</p>
+        <div class="row">
+          <div class="col-sm-6" >
+          <button class="btn btn-primary" (click)="cart(item.pid)" >ADD TO CART</button>
+          </div>
+          <div class="col-sm-6" >
+       <button class="btn btn-warning" (click)="buy(item)" >Buy NOW</button>
+                </div>
+                </div>
+      </div>
+    </div>
+    <br>
+
+</div>
+</div>
+
+<!-- ************************************************************************************** -->
+           <!-- <div class="row"> -->
+<!--                
+            <div class="col-sm-6" >
+                <div class="card" style="width:400px">
+                    <img class="card-img-top" src="/assets/items/book.jpg" alt="Card image" style="width:100%">
+                    <div class="card-body">
+                      <h4 class="card-title">John Doe</h4>
+                      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+                     <div class="row">
+                      <div class="col-sm-6" >
+                      <button class="btn btn-primary" >ADD TO CART</button>
+                      </div>
+                      <div class="col-sm-6" >
+                   <button class="btn btn-warning" >Buy NOW</button>
+                            </div>
+                            </div>
+                    </div>
+                  </div>
+                  <br>
+            </div> -->
+<!--         
+            <div class="col-sm-6" >
+                <div class="card" style="width:400px">
+                    <img class="card-img-top" src="/assets/items/book.jpg" alt="Card image" style="width:100%">
+                    <div class="card-body">
+                      <h4 class="card-title">John Doe</h4>
+                      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+                      <div class="row">
+                        <div class="col-sm-6" >
+                        <button class="btn btn-primary" >ADD TO CART</button>
+                        </div>
+                        <div class="col-sm-6" >
+                     <button class="btn btn-warning" >Buy NOW</button>
+                              </div>
+                              </div>
+                    </div>
+                  </div>
+                  <br>
+
+            </div> -->
+            
+            <!-- <div class="col-sm-6"  *ngFor="let item of msg;" >
+              <div class="card" style="width:400px">
+                  <img class="card-img-top" src={{item.src}} alt="Card image" style="width:100%">
+                  <div class="card-body">
+
+                    <div class="row">
+                    <div class="col-sm-6" >
+                    <h4 >{{item.name}}</h4>
+                    </div>
+                    <div class="col-sm-6" >
+                    <h4 > {{item.price |currency: 'INR'}}</h4>
+                    </div>
+                    </div>
+                    <p class="card-text">  {{item.description}}</p>
+                    <div class="row">
+                      <div class="col-sm-6" >
+                      <button class="btn btn-primary" (click)="cart(item)" >ADD TO CART</button>
+                      </div>
+                      <div class="col-sm-6" >
+                   <button class="btn btn-warning" (click)="buy(item)" >Buy NOW</button>
+                            </div>
+                            </div>
+                  </div>
+                </div>
+                <br>
+
+          </div>
+ 
+          </div>
+           ********************************************************************* 
+  
+        
+  
+            </div>
+             -->
