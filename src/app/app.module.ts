@@ -10,6 +10,9 @@ import { NavComponent } from './nav/nav.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { itemResolver } from './itemResolver.service';
+import { cartResolver } from './cartResolver';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import { LoginPageComponent } from './login-page/login-page.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [itemResolver,
+              cartResolver
+            ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

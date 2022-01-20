@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DataServiceService } from '../data-service.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { DataServiceService } from '../data-service.service';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor(private  fb:FormBuilder,private _service:DataServiceService) { }
+  constructor(private  fb:FormBuilder,private _service:DataServiceService,private router:Router) { }
   
   login:any;
   ngOnInit(): void {
@@ -22,7 +23,7 @@ export class LoginPageComponent implements OnInit {
       // mobile:[9848012345,[Validators.required]],
     });
 
-    localStorage.setItem("customerId","19");
+ 
     console.log(localStorage.getItem("customerId"));
   }
  
@@ -33,9 +34,11 @@ this._service.login(this.login.value).subscribe(
   
     this.loginData=JSON.parse(data);
     console.log((this.loginData));
-    console.log(this.loginData.cid);
+    localStorage.setItem("customerId",this.loginData);
+    // console.log(this.loginData.cid);
     // localStorage.setItem('customerId',this.loginData.cid);
 
+    this.router.navigate(['/items']);
 
   }
 )

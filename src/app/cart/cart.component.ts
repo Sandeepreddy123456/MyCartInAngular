@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataServiceService } from '../data-service.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { DataServiceService } from '../data-service.service';
 })
 export class CartComponent implements OnInit {
 
-  constructor(private _service:DataServiceService,private route:Router,private fb:FormBuilder) { }
+  constructor(private _service:DataServiceService,private route:Router,private fb:FormBuilder,private activatedRoute:ActivatedRoute) { }
 msg:any=[];
 products:any;
 productsDetails:any=[];
@@ -19,10 +19,11 @@ productsDetails:any=[];
   ngOnInit(): void {
   
     //getting product details in cart
-      this._service.getProductsInCart().subscribe(
-        (data)=>{
-          console.log(JSON.parse(data));
-          this.products=JSON.parse(data);
+      // this._service.getProductsInCart().subscribe(
+      //   (data)=>{
+        this.activatedRoute.data.subscribe((data)=>{
+          console.log(JSON.parse(data.cartData));
+          this.products=JSON.parse(data.cartData);
        
           for(var i=0;i<data.length;i++)
                {
@@ -43,10 +44,13 @@ productsDetails:any=[];
   };
   
   id:any;
-  removecart(id){
+  removecart(id:any){
+    console.log(id);
+    
+    this._service.deleteCartdetails(id).subscribe();
 
 
-
+this.ngOnInit();
    
   }
   buy(id:any,pid:any){
@@ -66,6 +70,7 @@ this._service.orders(this.msg).subscribe(
 
  console.log(localStorage.getItem("orderId"));
     this.route.navigate(['/myOrders']);
+    this._service.deleteCartdetails(id).subscribe();
 
   }
 

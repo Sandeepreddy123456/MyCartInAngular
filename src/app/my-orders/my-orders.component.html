@@ -2,12 +2,12 @@
     <app-nav></app-nav>
    <h3>my orders</h3>
    <div class="row">
-    <div class="col-sm-6"  *ngFor="let item of orderDetails3;" >
+    <div class="col-sm-6"  *ngFor="let item of orderDetails;" >
  
      <div class="card" style="width:400px">
        <div class="row">
          <div class="col-sm-6" >
-         <h4 >{{item.oid}}</h4>
+         <h4 >{{item.mod}}</h4>
          </div>
          <!-- <img class="card-img-top" src={{item.src}} style="width:100%"> -->
          <img  class="card-img-top" [src]="'data:image/jpeg;base64,'+item.product.pic_byte" alt="Card image" style="width:100%">

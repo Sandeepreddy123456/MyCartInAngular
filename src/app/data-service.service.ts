@@ -24,6 +24,15 @@ export class DataServiceService {
        return this.http.post<any>("http://localhost:8082/cart/"+localStorage.getItem("customerId"),cart,{responseType:'text' as 'json'})
       
      }
+
+
+     public getitems():Observable<any>{
+      // console.log(cart);
+     //  console.log(localStorage.getItem("customerId"));
+ 
+       return this.http.get<any>("http://localhost:8082/products",{responseType:'text' as 'json'})
+      
+     }
      public getProductsInCart():Observable<any>{
       // console.log();
      //  console.log(localStorage.getItem("customerId"));
@@ -48,11 +57,15 @@ export class DataServiceService {
        return this.http.get<any>("http://localhost:8082/customer/"+localStorage.getItem("customerId"),{responseType:'text' as 'json'})
       
      }
-
-
-
-
      //issues in  my project is removing card details after 
+
+     public deleteCartdetails(id:any):Observable<any>{
+    
+    console.log(id);
+    
+       return this.http.delete<any>("http://localhost:8082/carts/"+id,{responseType:'text' as 'json'})
+      
+     }
 
  
 
