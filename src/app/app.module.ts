@@ -11,7 +11,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { itemResolver } from './itemResolver.service';
-import { cartResolver } from './cartResolver';
+// import { cartResolver } from './cartResolver';
 
 
 @NgModule({
@@ -30,8 +30,8 @@ import { cartResolver } from './cartResolver';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [itemResolver,
-              cartResolver
+  providers: [itemResolver
+              // cartResolver
             ],
   bootstrap: [AppComponent]
 })
