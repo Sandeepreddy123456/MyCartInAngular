@@ -5,7 +5,9 @@ import { DataServiceService } from "./data-service.service";
 
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class itemResolver implements Resolve<any>{
     constructor(  private _service:DataServiceService){}
 

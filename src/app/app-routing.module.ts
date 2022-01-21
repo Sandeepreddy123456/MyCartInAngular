@@ -3,10 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { CartComponent } from './cart/cart.component';
 import { cartResolver } from './cartResolver';
-import { itemResolver } from './itemResolver.service';
+import { itemResolver } from './itemResolver';
 import { ItemsComponent } from './items/items.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { orderResolver } from './orderResolver';
 
 const routes: Routes = [
   {path:'login',component:LoginPageComponent},
@@ -20,7 +21,10 @@ const routes: Routes = [
   component:CartComponent,
   resolve:{cartData:cartResolver}
   },
-  {path:'myOrders',component:MyOrdersComponent}
+  {path:'myOrders',
+  component:MyOrdersComponent,
+   resolve:{orderData:orderResolver}
+  }
 
 ];
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { DataServiceService } from '../data-service.service';
 
@@ -9,7 +10,7 @@ import { DataServiceService } from '../data-service.service';
 })
 export class MyOrdersComponent implements OnInit {
 
-  constructor(private _service:DataServiceService) { }
+  constructor(private _service:DataServiceService,private activatedRoute:ActivatedRoute) { }
 msg:any=[]
 MyOrders:any=[];
 orderDetails:any[][]=[];
@@ -30,12 +31,17 @@ orderDetails3:any=[];
   //     console.log(data);
   //   }
   // )
-  this._service.getProductsInOrders().subscribe(
-    (data)=>{
+
+  // this._service.getProductsInOrders().subscribe(
+  //   (data)=>{
     
     
       // console.log(JSON.parse(data));
-      this.MyOrders.push(JSON.parse(data));
+      this.activatedRoute.data.subscribe(data=>{
+    
+    
+        console.log(JSON.parse(data.orderData));
+        this.MyOrders.push(JSON.parse(data.orderData));
          
       // for(var i=0;i<data.length;i++)
       // {
@@ -63,7 +69,7 @@ orderDetails3:any=[];
       // }
 
       ////////////////////////////////////////////////////////////////////
-      for(var i=0;i<data.length;i++){
+      for(var i=0;i<data.orderData.length;i++){
         this.orderDetails=this.MyOrders[i].myorderlist;
         console.log(this.orderDetails);
       //   for(var items of this.orderDetails)

@@ -58,10 +58,11 @@ console.log(localStorage.getItem("customerId"));
     this._service.cart(this.msg).subscribe(
       (data)=>{
 console.log(data);
+  
+this.route.navigate(['/cart']);
 })
   
-  
-   this.route.navigate(['/cart']);
+
 
   }
 

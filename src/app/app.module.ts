@@ -10,7 +10,7 @@ import { NavComponent } from './nav/nav.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { itemResolver } from './itemResolver.service';
+// import { itemResolver } from './itemResolver';
 // import { cartResolver } from './cartResolver';
 
 
@@ -30,7 +30,8 @@ import { itemResolver } from './itemResolver.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [itemResolver
+  providers: [
+    // itemResolver
               // cartResolver
             ],
   bootstrap: [AppComponent]
